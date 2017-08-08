@@ -1,0 +1,74 @@
+project.ext {
+	guavaVersion = '20.0'
+	gwtVersion = '2.8.0'
+	androidVersion = '4.0.1.2'
+	daggerVersion = '2.7'
+	teaVmVersion = '0.5.0-SNAPSHOT'
+}
+
+allprojects {
+	version = '0.1-SNAPSHOT'
+	group = 'io.github.nibiruos.oauth'
+
+	repositories {
+	    mavenCentral()
+	    jcenter()
+	    maven {
+	        url "https://oss.sonatype.org/content/repositories/snapshots/"
+	    }
+	    maven {
+	        url "https://oss.sonatype.org/content/repositories/google-snapshots/"
+	    }
+		mavenLocal()
+	}
+	buildscript {
+    	repositories {
+        	mavenCentral()
+    	}
+    	dependencies {
+	        classpath 'me.tatarka:gradle-retrolambda:3.3.0-beta4'
+	    }
+	}
+}
+
+subprojects {
+	apply plugin: 'eclipse'
+	apply plugin: 'java'
+	apply plugin: 'maven'
+	apply plugin: 'maven-publish'
+	
+	publishing {
+	    publications {
+	        mavenJava(MavenPublication) {
+	            from components.java
+	        }
+	    }
+	    repositories {
+        	maven {
+				credentials {
+					username = sonatypeUser
+					password = sonatypePassword
+				}
+	            url "https://oss.sonatype.org/content/repositories/snapshots"
+    	    }
+    	}
+	}
+
+	sourceCompatibility = 1.8
+
+	configurations {
+	    provided
+	}
+
+	sourceSets {
+	    main {
+	        compileClasspath += configurations.provided
+	    }
+	}
+
+	dependencies {
+		testCompile "junit:junit:4.12"
+		compile "com.google.dagger:dagger:${daggerVersion}"
+		provided "com.google.dagger:dagger-compiler:${daggerVersion}"
+	}
+}

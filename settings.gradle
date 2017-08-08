@@ -1,0 +1,6 @@
+rootProject.name = 'nibiruOAuth'
+
+include ':org.nibiru.oauth.android'
+include ':org.nibiru.oauth.core'
+include ':org.nibiru.oauth.gwt'
+include ':org.nibiru.oauth.ios'

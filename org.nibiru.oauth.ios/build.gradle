@@ -1,0 +1,4 @@
+dependencies {
+	compile project(":org.nibiru.oauth.core")
+	compile fileTree(dir: 'lib', include: '*.jar')
+}
