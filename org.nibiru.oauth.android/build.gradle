@@ -2,4 +2,5 @@ apply plugin: 'me.tatarka.retrolambda'
 
 dependencies {
     compile project(":org.nibiru.oauth.core")
+    compile "com.google.android:android:${androidVersion}"
 }

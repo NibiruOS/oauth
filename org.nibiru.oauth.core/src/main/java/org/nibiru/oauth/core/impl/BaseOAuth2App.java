@@ -34,4 +34,9 @@ public class BaseOAuth2App implements OAuth2App {
                 scope,
                 state);
     }
+
+    @Override
+    public String getRedirectUri() {
+        return redirectUri;
+    }
 }

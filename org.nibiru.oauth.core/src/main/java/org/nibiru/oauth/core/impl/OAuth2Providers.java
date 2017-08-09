@@ -6,6 +6,10 @@ import org.nibiru.oauth.core.api.OAuth2Provider;
 import javax.annotation.Nullable;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static org.nibiru.oauth.core.api.OAuth2Parameters.CLIENT_ID;
+import static org.nibiru.oauth.core.api.OAuth2Parameters.REDIRECT_URI;
+import static org.nibiru.oauth.core.api.OAuth2Parameters.SCOPE;
+import static org.nibiru.oauth.core.api.OAuth2Parameters.STATE;
 
 public enum OAuth2Providers implements OAuth2Provider {
     YAMMER("https://www.yammer.com/oauth2/authorize");
@@ -25,10 +29,10 @@ public enum OAuth2Providers implements OAuth2Provider {
         checkNotNull(redirectUri);
         StringBuilder sb = new StringBuilder();
         sb.append(authUrl);
-        addParam(sb, Constants.CLIENT_ID_KEY, clientId, "?");
-        addParam(sb, Constants.REDIRECT_URI_KEY, redirectUri, "&");
-        addParam(sb, Constants.SCOPE_KEY, scope, "&");
-        addParam(sb, Constants.STATE_KEY, state, "&");
+        addParam(sb, CLIENT_ID, clientId, "?");
+        addParam(sb, REDIRECT_URI, redirectUri, "&");
+        addParam(sb, SCOPE, scope, "&");
+        addParam(sb, STATE, state, "&");
 
         return sb.toString();
     }
@@ -43,13 +47,6 @@ public enum OAuth2Providers implements OAuth2Provider {
             sb.append("=");
             sb.append(value);
         }
-    }
-
-    interface Constants {
-        String CLIENT_ID_KEY = "client_id";
-        String REDIRECT_URI_KEY = "redirect_uri";
-        String SCOPE_KEY = "scope";
-        String STATE_KEY = "state";
     }
 }
 
