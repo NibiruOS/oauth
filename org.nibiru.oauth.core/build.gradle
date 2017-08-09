@@ -7,4 +7,5 @@ jar {
 dependencies {
 	compile "javax.inject:javax.inject:1"
 	compile "com.google.guava:guava:${guavaVersion}"
+	compile "com.google.code.findbugs:jsr305:2.0.3"
 }

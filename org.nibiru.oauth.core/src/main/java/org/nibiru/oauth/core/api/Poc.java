@@ -1,12 +1,17 @@
 package org.nibiru.oauth.core.api;
 
+import org.nibiru.oauth.core.impl.BaseOAuth2App;
+import org.nibiru.oauth.core.impl.OAuth2Providers;
+
 public class Poc {
-    enum Apps {CORE_VALUE}
+    OAuth2App app = new BaseOAuth2App(OAuth2Providers.YAMMER,
+            "6Gc3ZzQrjwHJQecoSt9kZQ",
+            "http://localhost:8080",
+            null,
+            null);
 
-    void caca() {
-        OAuth2Manager<Apps> o = null;
-        o.get(Apps.CORE_VALUE, OAuth2Manager.AuthProvider.YAMMER)
-                .authenticate((token) -> System.out.print("Token: " + token));
+    void deleteme() {
+        OAuth2Manager o = null;
+        o.authenticate(app, (token, state) -> System.out.print("Token: " + token));
     }
-
 }
