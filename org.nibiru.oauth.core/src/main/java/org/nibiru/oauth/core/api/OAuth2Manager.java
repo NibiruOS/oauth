@@ -1,11 +1,7 @@
 package org.nibiru.oauth.core.api;
 
-import javax.annotation.Nullable;
+import org.nibiru.async.core.api.promise.Promise;
 
 public interface OAuth2Manager {
-    interface AuthCallback {
-        void onAuth(String code, @Nullable String state);
-    }
-
-    void authenticate(OAuth2App app, AuthCallback callback);
+    Promise<OAuthResponse, OAuth2Exception> authenticate(OAuth2App app);
 }

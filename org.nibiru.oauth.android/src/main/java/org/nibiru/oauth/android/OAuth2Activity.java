@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
 
 import org.nibiru.oauth.core.api.OAuth2Parameters;
 
@@ -36,11 +35,8 @@ public class OAuth2Activity extends Activity {
                         AndroidOAuth2Manager.onAuth(uri.getQueryParameter(OAuth2Parameters.CODE),
                                 uri.getQueryParameter(OAuth2Parameters.STATE));
                     } else {
-                        String errorDescription = uri.getQueryParameter(OAuth2Parameters.ERROR_DESCRIPTION);
-                        Toast.makeText(OAuth2Activity.this,
-                                error + (errorDescription != null ? ": " + errorDescription : ""),
-                                Toast.LENGTH_LONG)
-                                .show();
+                        AndroidOAuth2Manager.onError(error,
+                                uri.getQueryParameter(OAuth2Parameters.ERROR_DESCRIPTION));
                     }
                     finish();
                     return true;

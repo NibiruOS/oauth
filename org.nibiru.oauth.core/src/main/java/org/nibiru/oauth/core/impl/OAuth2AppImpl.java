@@ -8,14 +8,14 @@ import javax.annotation.Nullable;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 
-public class BaseOAuth2App implements OAuth2App {
+public class OAuth2AppImpl implements OAuth2App {
     private final OAuth2Provider provider;
     private final String clientId;
     private final String redirectUri;
     private final String scope;
     private final String state;
 
-    public BaseOAuth2App(OAuth2Provider provider,
+    public OAuth2AppImpl(OAuth2Provider provider,
                          String clientId,
                          String redirectUri,
                          @Nullable String scope,
@@ -36,7 +36,28 @@ public class BaseOAuth2App implements OAuth2App {
     }
 
     @Override
+    public OAuth2Provider getProvider() {
+        return provider;
+    }
+
+    @Override
+    public String getClientId() {
+        return clientId;
+    }
+
+    @Override
     public String getRedirectUri() {
         return redirectUri;
+    }
+
+    @Override
+    public String getScope() {
+        return scope;
+    }
+
+    @Nullable
+    @Override
+    public String getState() {
+        return state;
     }
 }
