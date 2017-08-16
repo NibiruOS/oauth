@@ -40,12 +40,12 @@ public class AndroidOAuth2Manager implements OAuth2Manager {
     @Override
     public Promise<OAuthResponse, OAuth2Exception> authenticate(OAuth2App app) {
         checkNotNull(app);
-        Deferred<OAuthResponse, OAuth2Exception> deferred = Deferred.defer();
+        currentDeferred = Deferred.defer();
         Intent intent = new Intent();
         intent.setClassName(context, OAuth2Activity.class.getName());
         intent.putExtra(OAuth2Activity.AUTH_URL, app.buildAuthUrl());
         intent.putExtra(OAuth2Activity.REDIRECT_URI, app.getRedirectUri());
         context.startActivity(intent);
-        return deferred.promise();
+        return currentDeferred.promise();
     }
 }
