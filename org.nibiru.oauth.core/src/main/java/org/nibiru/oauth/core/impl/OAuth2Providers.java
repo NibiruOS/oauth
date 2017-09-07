@@ -12,7 +12,8 @@ import static org.nibiru.oauth.core.api.OAuth2Parameters.SCOPE;
 import static org.nibiru.oauth.core.api.OAuth2Parameters.STATE;
 
 public enum OAuth2Providers implements OAuth2Provider {
-    YAMMER("https://www.yammer.com/oauth2/authorize");
+    YAMMER("https://www.yammer.com/oauth2/authorize"),
+    OFFICE365("https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize");
 
     private final String authUrl;
 
