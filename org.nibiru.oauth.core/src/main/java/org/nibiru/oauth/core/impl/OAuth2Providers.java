@@ -1,13 +1,14 @@
 package org.nibiru.oauth.core.impl;
 
-
 import org.nibiru.oauth.core.api.OAuth2Provider;
 
 import javax.annotation.Nullable;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import static org.nibiru.oauth.core.api.OAuth2Parameters.CLIENT_ID;
+import static org.nibiru.oauth.core.api.OAuth2Parameters.CODE;
 import static org.nibiru.oauth.core.api.OAuth2Parameters.REDIRECT_URI;
+import static org.nibiru.oauth.core.api.OAuth2Parameters.RESPONSE_TYPE;
 import static org.nibiru.oauth.core.api.OAuth2Parameters.SCOPE;
 import static org.nibiru.oauth.core.api.OAuth2Parameters.STATE;
 
@@ -32,6 +33,7 @@ public enum OAuth2Providers implements OAuth2Provider {
         sb.append(authUrl);
         addParam(sb, CLIENT_ID, clientId, "?");
         addParam(sb, REDIRECT_URI, redirectUri, "&");
+        addParam(sb, RESPONSE_TYPE, CODE, "&");
         addParam(sb, SCOPE, scope, "&");
         addParam(sb, STATE, state, "&");
 

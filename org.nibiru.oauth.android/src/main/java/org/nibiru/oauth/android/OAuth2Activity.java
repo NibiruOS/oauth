@@ -31,7 +31,6 @@ public class OAuth2Activity extends Activity {
                         && redirectUri.getPath().equals(uri.getPath())) {
                     String error = uri.getQueryParameter(OAuth2Parameters.ERROR);
                     if (error == null) {
-
                         AndroidOAuth2Manager.onAuth(uri.getQueryParameter(OAuth2Parameters.CODE),
                                 uri.getQueryParameter(OAuth2Parameters.STATE));
                     } else {
