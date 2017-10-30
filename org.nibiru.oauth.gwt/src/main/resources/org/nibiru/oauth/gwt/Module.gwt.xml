@@ -3,7 +3,6 @@
 	"http://google-web-toolkit.googlecode.com/svn/tags/2.4.0/distro-source/core/src/gwt-module.dtd">
 <module>
 	<inherits name="org.nibiru.oauth.core.Module" />
-	<!--
+	<source path="business" />
 	<source path="ioc" />
-	-->
 </module>

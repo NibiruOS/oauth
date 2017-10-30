@@ -1,5 +1,6 @@
-package org.nibiru.oauth.android;
+package org.nibiru.oauth.android.ioc;
 
+import org.nibiru.oauth.android.business.AndroidOAuth2Manager;
 import org.nibiru.oauth.core.api.OAuth2Manager;
 
 import dagger.Module;

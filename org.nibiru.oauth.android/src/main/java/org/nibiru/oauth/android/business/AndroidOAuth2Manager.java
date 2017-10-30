@@ -1,4 +1,4 @@
-package org.nibiru.oauth.android;
+package org.nibiru.oauth.android.business;
 
 import android.content.Context;
 import android.content.Intent;
