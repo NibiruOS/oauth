@@ -43,9 +43,7 @@ public class GwtOAuth2Manager implements OAuth2Manager {
                         }
                     }
                 } catch (Exception e) {
-                    finish();
-                    deferred.reject(new OAuth2Exception("",
-                            e.getMessage()));
+                    // Just retry again
                 }
             }
 
